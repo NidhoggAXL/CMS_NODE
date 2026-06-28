@@ -10,7 +10,7 @@ const privateKey = fs.readFileSync(privateKeyPath, "utf8").trim();
 const publicKey = fs.readFileSync(publicKeyPath, "utf8").trim();
 
 // 生成 token
-const generateToken = (userId, username) => {
+const generateToken = (userId, username, roleId) => {
   // 过期时间，这里设置为 24 小时
   const expiresIn = "24h";
 
@@ -18,6 +18,7 @@ const generateToken = (userId, username) => {
   const payload = {
     id: userId,
     name: username,
+    roleId: roleId ?? null,
   };
 
   // 使用私钥生成 token
